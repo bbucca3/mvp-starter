@@ -11,19 +11,21 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var shelterSchema = mongoose.Schema({
+  name: String,
+  city: String,
+  email: String,
+  phone: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Shelter = mongoose.model('Item', shelterSchema);
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Shelter.find({}, function(err, shelters) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, shelters);
     }
   });
 };
