@@ -19,26 +19,44 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
+  // Pet Adoption Shop
+
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+
+  // Pet owners or people looking to become pet owners.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
+  // People can help alleviate (over)crowding in rescue shelters and rehabilitate rescued dogs and cats by looking to adopt instead of shopping in terms of a specific breed. 
+
 ## Problem ##
   > Describe the problem your product solves.
+
+  // Helps to alleviate over crowding in rescue (kill) shelters and give abandoned and abused animals a chance at a new life.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
+  // Crowd source rescue shelters based on location search. 
+
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+
+  // "This app helps connect forgotten dogs and cats in need of a loving home."
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
 
+  // Simply search by zip code
+
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  // "I never realized how many rescue shelters were close by and how many rescue animals need assistance either through volunteering, fostering or adopting."
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  // Visit the website(s) of the shelters that come up via your search by zip code. 
