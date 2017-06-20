@@ -18,7 +18,7 @@ var shelterSchema = mongoose.Schema({
   phone: String
 });
 
-var Shelter = mongoose.model('Item', shelterSchema);
+var Shelter = mongoose.model('Shelter', shelterSchema);
 
 var selectAll = function(callback) {
   Shelter.find({}, function(err, shelters) {
