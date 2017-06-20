@@ -14,11 +14,13 @@ app.use(bodyParser());
 
 app.post('/shelters/search', function(req, res) {
 
-  let url = `http://api.petfinder.com/shelter.find?key=${token.token}&location=08901&format=json`;
+  let url = `http://api.petfinder.com/shelter.find?key=${token.token}&location=${req.body.zipCode}&format=json`;
+  // console.log(url);
 
   function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
+      // console.log(info);
       info.petfinder.shelters.shelter.forEach((shelter) => {
         shelter = new Shelter({
           name:shelter.name.$t,

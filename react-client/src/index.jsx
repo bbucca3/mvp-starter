@@ -26,10 +26,32 @@ class App extends React.Component {
   //   });
   // }
 
+  search(zipCode) {
+    if (zipCode.length !== 5) {
+      console.log('Please enter a 5 digit zip')
+    } else {      
+      console.log(`${zipCode} was searched`);
+
+      $.ajax({
+        url:'/shelters/search',
+        type:'POST',
+        data:{zipCode:zipCode},
+        success: () => {
+          console.log('success client post');
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });     
+    }
+  }
+
   render () {
     return (<div>
-      <h1>Shelter List</h1>
-      <Search/>
+      <h1>Pet Adoption Shop</h1>
+
+      <Search onSearch={this.search.bind(this)} />
+
       <List items={this.state.items}/>
     </div>)
   }
