@@ -10,6 +10,7 @@ class App extends React.Component {
     this.state = { 
       items: []
     }
+    console.log(this.state.items);
   }
 
   // componentDidMount() {
@@ -28,22 +29,39 @@ class App extends React.Component {
 
   search(zipCode) {
     if (zipCode.length !== 5) {
-      console.log('Please enter a 5 digit zip')
+      alert('Please enter a 5 digit zip')
     } else {      
       console.log(`${zipCode} was searched`);
 
       $.ajax({
         url:'/shelters/search',
         type:'POST',
-        data:{zipCode:zipCode},
+        data:{zip:zipCode},
         success: () => {
           console.log('success client post');
+          this.getShelters(zipCode);
         },
         error: (err) => {
           console.log(err);
         }
       });     
     }
+  }
+
+  getShelters(zip) {
+    console.log('inside getShelters');
+    $.ajax({
+      url:'/shelters',
+      type:'GET',
+      data:{zip:zip},
+      success: (data) => {
+        console.log(this);
+        this.setState({items:data});
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   render () {

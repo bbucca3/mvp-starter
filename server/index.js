@@ -14,8 +14,7 @@ app.use(bodyParser());
 
 app.post('/shelters/search', function(req, res) {
 
-  let url = `http://api.petfinder.com/shelter.find?key=${token.token}&location=${req.body.zipCode}&format=json`;
-  // console.log(url);
+  let url = `http://api.petfinder.com/shelter.find?key=${token.token}&location=${req.body.zip}&format=json`;
 
   function callback(error, response, body) {
     if (!error && response.statusCode == 200) {
@@ -33,7 +32,7 @@ app.post('/shelters/search', function(req, res) {
     }
   } 
   request(url, callback);
-  res.end('hello from successful server post');
+  res.end('successful server post');
 });
 
 app.get('/shelters', function (req, res) {
@@ -44,9 +43,14 @@ app.get('/shelters', function (req, res) {
     if(err) {
       res.sendStatus(500);
     } else {
-      res.json(data);
+      res.writeHead(200, {'content-type':'application/json'});
+      res.end(JSON.stringify(data));
     }
   });
+  // Shelter.find().limit().sort({id:1}).exec((err, data) => {
+  //   res.writeHead(200, {'content-type':'application/json'});
+  //   res.end(JSON.stringify(data));
+  // });
 });
 
 app.listen(3000, function() {
