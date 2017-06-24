@@ -13,9 +13,12 @@ db.once('open', function() {
 
 var shelterSchema = mongoose.Schema({
   name: String,
-  city: String,
   email: String,
-  phone: String
+  phone: String,
+  city: String,
+  state: String,
+  address: String,
+  shelterId: {type:String, unique:true}
 });
 
 var Shelter = mongoose.model('Shelter', shelterSchema);

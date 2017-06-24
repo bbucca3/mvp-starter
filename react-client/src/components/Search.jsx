@@ -15,11 +15,9 @@ class Search extends React.Component {
 
   render() {
     return (<div>
-      <h2> Search for shelters </h2>
-
-      Enter a zip code: <input id="zip"/>
+      <h2> Search for pet shelters </h2>
+      Enter a 5 digit zip code: <input id="zip"/>
       <button onClick={this.search}> Search </button>
-
     </div>)
   }
 }

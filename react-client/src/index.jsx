@@ -10,29 +10,25 @@ class App extends React.Component {
     this.state = { 
       items: []
     }
-    console.log(this.state.items);
   }
-
-  // componentDidMount() {
-  //   $.ajax({
-  //     url: '/items', 
-  //     success: (data) => {
-  //       this.setState({
-  //         items: data
-  //       })
-  //     },
-  //     error: (err) => {
-  //       console.log('err', err);
-  //     }
-  //   });
-  // }
-
+  // dynamic render upon page reload
+  componentDidMount() {
+    $.ajax({
+      url: '/shelters', 
+      success: (data) => {
+        this.setState({items:data});
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+    });
+  }
+  // handle search from zip code submission via search component 
   search(zipCode) {
     if (zipCode.length !== 5) {
       alert('Please enter a 5 digit zip')
     } else {      
       console.log(`${zipCode} was searched`);
-
       $.ajax({
         url:'/shelters/search',
         type:'POST',
@@ -40,6 +36,7 @@ class App extends React.Component {
         success: () => {
           console.log('success client post');
           this.getShelters(zipCode);
+          // this.componentDidMount();
         },
         error: (err) => {
           console.log(err);
@@ -55,8 +52,14 @@ class App extends React.Component {
       type:'GET',
       data:{zip:zip},
       success: (data) => {
-        console.log(this);
-        this.setState({items:data});
+        // console.log(data);
+        this.setState({
+          items:data
+        });
+        // https://stackoverflow.com/a/12038224
+        setTimeout(function () { 
+          location.reload();
+        }, 750);
       },
       error: (err) => {
         console.log(err);
@@ -64,12 +67,11 @@ class App extends React.Component {
     });
   }
 
+
   render () {
     return (<div>
       <h1>Pet Adoption Shop</h1>
-
       <Search onSearch={this.search.bind(this)} />
-
       <List items={this.state.items}/>
     </div>)
   }

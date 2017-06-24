@@ -23,9 +23,12 @@ app.post('/shelters/search', function(req, res) {
       info.petfinder.shelters.shelter.forEach((shelter) => {
         shelter = new Shelter({
           name:shelter.name.$t,
-          city:shelter.city.$t,
           email:shelter.email.$t,
-          phone:shelter.phone.$t
+          phone:shelter.phone.$t,
+          city:shelter.city.$t,
+          state:shelter.state.$t,
+          address:shelter.address1.$t,
+          shelterId:shelter.id.$t
         });
         shelter.save();
       });
@@ -39,18 +42,18 @@ app.get('/shelters', function (req, res) {
 
   console.log('inside server get');
 
-  selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.writeHead(200, {'content-type':'application/json'});
-      res.end(JSON.stringify(data));
-    }
-  });
-  // Shelter.find().limit().sort({id:1}).exec((err, data) => {
-  //   res.writeHead(200, {'content-type':'application/json'});
-  //   res.end(JSON.stringify(data));
+  // selectAll(function(err, data) {
+  //   if(err) {
+  //     res.sendStatus(500);
+  //   } else {
+  //     res.writeHead(200, {'content-type':'application/json'});
+  //     res.end(JSON.stringify(data));
+  //   }
   // });
+  Shelter.find().sort({name:1}).exec((err, data) => {
+    res.writeHead(200, {'content-type':'application/json'});
+    res.end(JSON.stringify(data));
+  });
 });
 
 app.listen(3000, function() {
